@@ -1,6 +1,6 @@
-// typing
-const text=["Frontend Developer","Web Designer","Learner 🚀"];
-let i=0,j=0,current="",del=false;
+// typing effect
+const text = ["Frontend Developer", "Web Designer"];
+let i=0, j=0, current="", del=false;
 
 function type(){
     let el=document.getElementById("typing");
@@ -17,30 +17,20 @@ function type(){
         if(j===text[i].length) del=true;
         if(j===0){del=false;i++;}
 
-        setTimeout(type,del?100:200);
+        setTimeout(type, del?100:200);
     }else{i=0;type();}
 }
 type();
 
-// scroll
-function scrollToSection(id){
-    document.getElementById(id).scrollIntoView({behavior:"smooth"});
-}
 
-// reveal
-const sections=document.querySelectorAll(".hidden");
+// EmailJS
+emailjs.init("YOUR_PUBLIC_KEY");
 
-window.addEventListener("scroll",()=>{
-    sections.forEach(sec=>{
-        let top=sec.getBoundingClientRect().top;
-        if(top<window.innerHeight-100){
-            sec.classList.add("show");
-        }
-    });
-});
-
-// form
-function sendMessage(e){
+document.getElementById("contact-form")
+.addEventListener("submit", function(e){
     e.preventDefault();
-    document.getElementById("msg").innerText="Message Sent ✅";
-}
+
+    emailjs.sendForm("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",this)
+    .then(()=>alert("Message Sent ✅"))
+    .catch(()=>alert("Error ❌"));
+});
