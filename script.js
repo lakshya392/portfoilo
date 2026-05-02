@@ -23,14 +23,22 @@ function type(){
 type();
 
 
-// EmailJS
-emailjs.init("YOUR_PUBLIC_KEY");
+(function(){
+  emailjs.init("62KuctRvN9v5M3DxM"); // yaha apni public key daal
+})();
 
 document.getElementById("contact-form")
-.addEventListener("submit", function(e){
-    e.preventDefault();
+.addEventListener("submit", function(e) {
+  e.preventDefault();
 
-    emailjs.sendForm("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",this)
-    .then(()=>alert("Message Sent ✅"))
-    .catch(()=>alert("Error ❌"));
+  emailjs.sendForm(
+    "service_iql7qas", 
+    "template_rt16qr6", 
+    this
+  )
+  .then(function() {
+    alert("Message Sent Successfully 😎");
+  }, function(error) {
+    alert("Failed 😢 " + JSON.stringify(error));
+  });
 });
