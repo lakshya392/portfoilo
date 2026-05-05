@@ -31,14 +31,21 @@ document.getElementById("contact-form")
 .addEventListener("submit", function(e) {
   e.preventDefault();
 
-  emailjs.sendForm(
-    "service_iql7qas", 
-    "template_rt16qr6", 
+ emailjs.sendForm(
+  "service_iql7qas", 
+  "template_main", 
+  this
+)
+.then(() => {
+  return emailjs.sendForm(
+    "service_iql7qas",
+    "template_reply",
     this
-  )
-  .then(function() {
-    alert("Message Sent Successfully 😎");
-  }, function(error) {
-    alert("Failed 😢 " + JSON.stringify(error));
-  });
+  );
+})
+.then(() => {
+  alert("Message Sent Successfully 😎");
+})
+.catch((error) => {
+  alert("Failed 😢 " + JSON.stringify(error));
 });
