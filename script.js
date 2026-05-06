@@ -1,4 +1,3 @@
-// typing effect
 const text = ["Frontend Developer", "Web Designer"];
 let i=0, j=0, current="", del=false;
 
@@ -24,7 +23,7 @@ type();
 
 
 (function(){
-  emailjs.init("62KuctRvN9v5M3DxM"); // yaha apni public key daal
+  emailjs.init("62KuctRvN9v5M3DxM");
 })();
 
 document.getElementById("contact-form")
