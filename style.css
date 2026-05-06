@@ -47,8 +47,8 @@ button{
 .profile {
     width: 150px;
     height: 150px;
-    border-radius: 50%;   /* circle banayega */
-    object-fit: cover;    /* image stretch nahi hogi */
+    border-radius: 50%;   
+    object-fit: cover;    
     border: 3px solid #a855f7;
     box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
 }
