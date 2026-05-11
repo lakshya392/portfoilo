@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
         )
         .then(() => {
             return emailjs.sendForm(
-                "template_rt16qr6",
+                "service_iql7qas",
                 "template_reply",
                 this
             );
