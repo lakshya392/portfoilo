@@ -1,50 +1,28 @@
-const text = ["Frontend Developer", "Web Designer"];
-let i=0, j=0, current="", del=false;
+document.addEventListener("DOMContentLoaded", function() {
 
-function type(){
-    let el=document.getElementById("typing");
+  document.getElementById("contact-form")
+  .addEventListener("submit", function(e) {
+    e.preventDefault();
 
-    if(i<text.length){
-        if(!del && j<=text[i].length){
-            current=text[i].substring(0,j++);
-        }else if(del && j>=0){
-            current=text[i].substring(0,j--);
-        }
+    emailjs.sendForm(
+      "service_iql7qas", 
+      "template_main", 
+      this
+    )
+    .then(() => {
+      return emailjs.sendForm(
+        "service_iql7qas",
+        "template_reply",
+        this
+      );
+    })
+    .then(() => {
+      alert("Message Sent Successfully 😎");
+    })
+    .catch((error) => {
+      alert("Failed 😢 " + JSON.stringify(error));
+    });
 
-        el.innerHTML=current;
+  });
 
-        if(j===text[i].length) del=true;
-        if(j===0){del=false;i++;}
-
-        setTimeout(type, del?100:200);
-    }else{i=0;type();}
-}
-type();
-
-
-(function(){
-  emailjs.init("62KuctRvN9v5M3DxM");
-})();
-
-document.getElementById("contact-form")
-.addEventListener("submit", function(e) {
-  e.preventDefault();
-
- emailjs.sendForm(
-  "service_iql7qas", 
-  "template_main", 
-  this
-)
-.then(() => {
-  return emailjs.sendForm(
-    "service_iql7qas",
-    "template_reply",
-    this
-  );
-})
-.then(() => {
-  alert("Message Sent Successfully 😎");
-})
-.catch((error) => {
-  alert("Failed 😢 " + JSON.stringify(error));
 });
