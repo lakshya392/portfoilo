@@ -26,16 +26,21 @@ type();
 // EMAILJS
 document.addEventListener("DOMContentLoaded", function () {
 
-    emailjs.init("62KuctRvN9v5M3DxM"); // public key
+    emailjs.init("62KuctRvN9v5M3DxM");
 
     const form = document.getElementById("contact-form");
+
+    if (!form) {
+        alert("Form not found ❌");
+        return;
+    }
 
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
         emailjs.sendForm(
             "service_iql7qas",
-            "template_main",
+            "template_rt16qr6", 
             this
         )
         .then(() => {
