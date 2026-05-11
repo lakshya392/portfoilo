@@ -39,13 +39,13 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
 
         emailjs.sendForm(
-            "service_iql7qas",
+            "service_iql6qas",
             "template_rt16qr6", 
             this
         )
         .then(() => {
             return emailjs.sendForm(
-                "service_iql7qas",
+                " template_rt16qr6",
                 "template_reply",
                 this
             );
