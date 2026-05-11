@@ -39,25 +39,18 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
 
         emailjs.sendForm(
-            "service_iql7qas",
-            "template_rt16qr6", 
-            this
-        )
-        .then(() => {
-            return emailjs.sendForm(
-                "service_iql7qas",
-                "template_reply",
-                this
-            );
-        })
-        .then(() => {
-            alert("Message Sent Successfully 😎");
-            form.reset();
-        })
-        .catch((error) => {
-            alert("Failed 😢 " + JSON.stringify(error));
-        });
-
+    "service_iql7qas",
+    "template_rt16qr6", 
+    this
+)
+.then(() => {
+    alert("Message Sent Successfully 😎");
+    form.reset();
+})
+.catch((error) => {
+    alert("Failed 😢 " + JSON.stringify(error));
+});
+                                                
     });
 
 });
