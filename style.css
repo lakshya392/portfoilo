@@ -113,8 +113,18 @@ button:hover{
     text-decoration:none;
 }
 .insta a {
-    color: #E1306C;
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 18px;
+    border-radius: 25px;
+    background: #a855f7; /* same as Hire Me */
+    color: white;
     text-decoration: none;
+    transition: 0.3s;
+}
+
+.insta a:hover {
+    opacity: 0.8;
 }
 
 /* FORM */
