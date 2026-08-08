@@ -1,4 +1,8 @@
-*{margin:0;padding:0;box-sizing:border-box;}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
 body{
     font-family:'Poppins',sans-serif;
@@ -6,74 +10,122 @@ body{
     color:white;
 }
 
+/* NAVBAR */
 nav{
     display:flex;
     justify-content:space-between;
+    align-items:center;
     padding:20px;
     background:rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
 }
 
-.logo{color:#a855f7;}
+.logo{
+    color:#a855f7;
+    font-size:22px;
+    font-weight:bold;
+}
 
 .nav-links a{
     margin:10px;
     color:white;
     text-decoration:none;
+    transition:0.3s;
 }
 
+.nav-links a:hover{
+    color:#a855f7;
+}
+
+/* HERO */
 .hero{
     text-align:center;
     padding:80px 20px;
 }
 
+.hero h1 span{
+    color:#a855f7;
+}
+
 button{
     margin-top:20px;
-    padding:12px 20px;
+    padding:12px 25px;
     border:none;
     border-radius:25px;
     background:#a855f7;
     color:white;
     cursor:pointer;
+    transition:0.3s;
 }
 
+button:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 15px rgba(168, 85, 247, 0.7);
+}
+
+/* GLASS EFFECT */
 .glass{
     margin:30px auto;
     width:80%;
-    padding:20px;
+    padding:25px;
     background:rgba(255,255,255,0.05);
-    border-radius:10px;
+    border-radius:15px;
     text-align:center;
-}
-.profile {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;   
-    object-fit: cover;    
-    border: 3px solid #a855f7;
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
+    backdrop-filter: blur(10px);
 }
 
+/* PROFILE IMAGE */
+.profile{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #a855f7;
+    box-shadow:0 0 20px rgba(168, 85, 247, 0.6);
+    margin-bottom:15px;
+}
+
+/* PROJECTS */
 .projects{
     display:flex;
     justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
 }
 
 .card{
     padding:20px;
     background:rgba(255,255,255,0.08);
     border-radius:10px;
+    transition:0.3s;
+    width:250px;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 15px rgba(168, 85, 247, 0.4);
 }
 
 .card a{
     display:block;
     margin:5px;
     color:#a855f7;
+    text-decoration:none;
 }
 
-input,textarea{
+/* FORM */
+input, textarea{
     width:80%;
-    padding:10px;
+    padding:12px;
     margin:10px;
     border-radius:10px;
     border:none;
+    outline:none;
+    background:rgba(255,255,255,0.1);
+    color:white;
+}
+
+input::placeholder,
+textarea::placeholder{
+    color:#ccc;
 }
