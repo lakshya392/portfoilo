@@ -112,6 +112,10 @@ button:hover{
     color:#a855f7;
     text-decoration:none;
 }
+.insta a {
+    color: #E1306C;
+    text-decoration: none;
+}
 
 /* FORM */
 input, textarea{
