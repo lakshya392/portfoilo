@@ -1,56 +1,81 @@
-// typing effect
-const text = ["Frontend Developer", "Web Designer"];
-let i = 0, j = 0, current = "", del = false;
+// ================= TYPING EFFECT =================
+const text = [
+    "Video Editor 🎬",
+    "Logo Designer 🎨",
+    "Banner Creator 🚀"
+];
 
-function type() {
-    let el = document.getElementById("typing");
+let i = 0;
+let j = 0;
+let current = "";
+let isDeleting = false;
 
-    if (i < text.length) {
-        if (!del && j <= text[i].length) {
-            current = text[i].substring(0, j++);
-        } else if (del && j >= 0) {
-            current = text[i].substring(0, j--);
-        }
+function typeEffect() {
+    const el = document.getElementById("typing");
 
-        el.innerHTML = current;
+    if (!el) return;
 
-        if (j === text[i].length) del = true;
-        if (j === 0) { del = false; i++; }
+    if (!isDeleting && j <= text[i].length) {
+        current = text[i].substring(0, j++);
+    } 
+    else if (isDeleting && j >= 0) {
+        current = text[i].substring(0, j--);
+    }
 
-        setTimeout(type, del ? 100 : 200);
-    } else { i = 0; type(); }
+    el.innerHTML = current;
+
+    // typing speed control
+    let speed = isDeleting ? 80 : 150;
+
+    if (j === text[i].length) {
+        isDeleting = true;
+        speed = 1000; // pause at full text
+    }
+
+    if (j === 0 && isDeleting) {
+        isDeleting = false;
+        i = (i + 1) % text.length;
+    }
+
+    setTimeout(typeEffect, speed);
 }
-type();
+
+document.addEventListener("DOMContentLoaded", typeEffect);
 
 
-// EMAILJS
+// ================= EMAIL JS =================
 document.addEventListener("DOMContentLoaded", function () {
 
+    // init EmailJS
     emailjs.init("62KuctRvN9v5M3DxM");
 
     const form = document.getElementById("contact-form");
 
     if (!form) {
-        alert("Form not found ❌");
+        console.log("Form not found ❌");
         return;
     }
 
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
+        const btn = form.querySelector("button");
+        btn.innerText = "Sending... ⏳";
+
         emailjs.sendForm(
-    "service_iql7qas",
-    "template_rt16qr6", 
-    this
-)
-.then(() => {
-    alert("Message Sent Successfully 😎");
-    form.reset();
-})
-.catch((error) => {
-    alert("Failed 😢 " + JSON.stringify(error));
-});
-                                                
+            "service_iql7qas",
+            "template_rt16qr6",
+            this
+        )
+        .then(() => {
+            btn.innerText = "Send Message 🚀";
+            alert("Message Sent Successfully 😎");
+            form.reset();
+        })
+        .catch((error) => {
+            btn.innerText = "Send Message 🚀";
+            alert("Failed 😢 " + JSON.stringify(error));
+        });
     });
 
 });
